@@ -1,0 +1,152 @@
+
+
+
+
+/* ESTILOS GERAL */
+
+*{
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(77, 73, 70);
+    height: 100vh;
+}
+
+p{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin-top:30px;
+    margin-bottom: 30px;
+    text-shadow: 0px 4px 10px;
+}
+
+a{
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+}
+
+button {
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* ESTILO DA LANDING PAGE ABAIXO*/
+
+
+.tabelaraiz{
+    display:flex;
+    vertical-align: top;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.logo img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height: 500px;
+    border: 1px solid #9147ff;
+    border-radius: 15px;
+    box-shadow: 0px 15px 35px #9147ff;
+}
+
+.button-name {
+    align-items: center;
+    background-color: #000000;
+    border-radius: 4px;
+    box-shadow: rgba(45, 35, 66, 0.2) 0 2px 4px,rgba(45, 35, 66, 0.15) 0 7px 13px -3px,#9147ff 0 -3px 0 inset;
+    height: 48px;
+    justify-content: center;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    font-size: 18px;
+    width: 200px;
+    margin-top: 5px;
+}
+
+.button-name:hover {
+    transform: translateY(-5px);
+}
+
+.button-name:active {
+    box-shadow: #9147ff 0px 2px 10px inset;
+    transform: translateY(2px);
+}
+
+
+
+
+/* ESTILO DA PAGE ROTINA ABAIXO */
+
+
+.tab_rotinas{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.menu_rotinas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:300px;
+    height: 600px;
+    border-radius: 15px;
+}
+
+.voltar_rotina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px 5px 15px;
+    background-color: rgb(146, 148, 148);
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* ESTILO DA PAGE imags ABAIXO */
+
+
+.miniimg{
+    height:45px;
+    border-radius: 8px;
+}
+
+.logoimg{
+    border-radius: 9px;
+}
