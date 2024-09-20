@@ -10,11 +10,11 @@
 <body class="bg-primary">
     <div id="app" class="text-light container mt-5">
         <h2 style="text-align: center;">CONVERSOR DE DISTÂNCIA</h2>
-        <div class="form-group mx-auto" style="width: 700px;">
+        <div class="form-group">
             <label for="valor">Valor:</label>
             <input type="number" v-model="valor" class="form-control" placeholder="Digite o valor">
         </div>
-        <div class="form-group mx-auto" style="width: 700px;">
+        <div class="form-group">
             <label for="unidadeOrigem">De:</label>
             <select v-model="unidadeOrigem" class="form-control">
                 <option value="m">METROS</option>
@@ -22,17 +22,16 @@
                 <option value="mi">MILHAS</option>
             </select>
         </div>
-        <div class="form-group mx-auto" style="width: 700px;">
+        <div class="form-group">
             <label for="unidadeDestino">Para:</label>
             <select v-model="unidadeDestino" class="form-control">
                 <option value="m">METROS</option>
                 <option value="km">QUILÔMETROS</option>
                 <option value="mi">MILHAS</option>
             </select>
-            <button class="btn btn-dark" style="margin-top: 30px; width: 150px; height: 40px;" @click="converter" >Converter</button>
-            <h3 class="text-light mt-4">Resultado: {{ resultado }} {{ unidadeDestino }}</h3>
         </div>
-
+        <button class="btn btn-dark mx-auto" @click="converter" style="width: 150px; height: 50px;">Converter</button>
+        <h3 class="text-light mt-4">Resultado: {{ resultado }} {{ unidadeDestino }}</h3>
     </div>
 
     <script>
