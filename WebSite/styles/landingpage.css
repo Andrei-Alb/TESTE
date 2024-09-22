@@ -1,9 +1,9 @@
-body{
+body {
     margin: 0;
     min-height: 100vh;
 }
 
-.wall_back{
+.wall_back {
     display: flex;
     position: relative;
     width: 100%;
@@ -26,36 +26,32 @@ body{
 
 .container {
     display: flex;
-    flex-direction: column; /* Organiza o conteúdo verticalmente */
+    flex-direction: column;
     align-items: center;
     height: 100%;
     min-height: 100vh;
-    --size: 150px; /* control the size */
+    --size: 150px;
     --color: #d1bdbd;
-  
-    background: radial-gradient(
-        circle at 15% 30%,
-        transparent 40%,
-        var(--color) 41%
-      ),
-      radial-gradient(circle at 85% 30%, transparent 40%, var(--color) 41%),
-      radial-gradient(circle at 50% 70%, transparent 40%, var(--color) 41%),
-      radial-gradient(circle at 15% 70%, transparent 40%, var(--color) 41%),
-      radial-gradient(circle at 85% 70%, transparent 40%, var(--color) 41%),
-      linear-gradient(
-        45deg,
-        var(--color) 25%,
-        rgba(0, 0, 0, 0.067) 0,
-        rgba(0, 0, 0, 0.067) 50%,
-        var(--color) 0,
-        var(--color) 75%,
-        #1111 0,
-        #1111 100%,
-        var(--color) 0
-      );
+
+    background: radial-gradient(circle at 15% 30%,
+            transparent 40%,
+            var(--color) 41%),
+        radial-gradient(circle at 85% 30%, transparent 40%, var(--color) 41%),
+        radial-gradient(circle at 50% 70%, transparent 40%, var(--color) 41%),
+        radial-gradient(circle at 15% 70%, transparent 40%, var(--color) 41%),
+        radial-gradient(circle at 85% 70%, transparent 40%, var(--color) 41%),
+        linear-gradient(45deg,
+            var(--color) 25%,
+            rgba(0, 0, 0, 0.067) 0,
+            rgba(0, 0, 0, 0.067) 50%,
+            var(--color) 0,
+            var(--color) 75%,
+            #1111 0,
+            #1111 100%,
+            var(--color) 0);
     background-size: var(--size) var(--size);
-  }
-  
+}
+
 
 
 .profile-image {
@@ -82,9 +78,9 @@ body{
     border-radius: 30px;
     background-color: rgb(255, 255, 255);
     position: relative;
-  }
-  
-  .loader::before {
+}
+
+.loader::before {
     content: "";
     position: absolute;
     background: var(--loader-color);
@@ -95,25 +91,25 @@ body{
     border-radius: 30px;
     animation: moving 3s ease-in-out infinite;
     ;
-  }
-  
-  @keyframes moving {
+}
+
+@keyframes moving {
     50% {
-      width: 100%;
+        width: 100%;
     }
-  
+
     100% {
-      width: 0;
-      right: 0;
-      left: unset;
+        width: 0;
+        right: 0;
+        left: unset;
     }
-  }
+}
 
 
 
 
 
-.menu{
+.menu {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,16 +117,17 @@ body{
     margin-top: 150px;
 }
 
-.title{
+.title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 50px;
     text-shadow: 2px 0px 0px white;
 }
 
-.menu button{
+.menu button {
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
-    padding: 10px 20px 10px 20px; margin-top: 20px;
+    padding: 10px 20px 10px 20px;
+    margin-top: 20px;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
@@ -141,17 +138,17 @@ body{
 
 .btn:hover {
     border-radius: 5px;
-    transform: translateY(-10px);
+    transform: translateY(-2px);
     box-shadow: 0 7px 0 -2px #44444481;
-   }
-   
-   .btn:active {
-    transition: all 0.2s;
-    transform: translateY(-5px);
-    box-shadow: 0 2px 0 -2px #44444481;
-   }
+}
 
-.menu .contact{
+.btn:active {
+    transition: all 0.2s;
+    transform: translateY(-3px);
+    box-shadow: 0 2px 0 -2px #44444481;
+}
+
+.menu .contact {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,18 +157,18 @@ body{
     margin-top: 20px;
 }
 
-.contact-forms p{
+.contact-forms p {
     margin-top: 40px;
 }
 
-.contact a{
+.contact a {
     display: flex;
     height: 50px;
     width: 50px;
     margin: 0px 10px 0px 10px;
 }
 
-.contact img{
+.contact img {
     height: 50px;
 }
 
@@ -192,39 +189,37 @@ body{
         width: 100%;
     }
 
-    .wall_back img{
+    .wall_back img {
         object-fit: cover;
         height: 150px;
     }
 
     .wall_profile {
-        width: 120px;  
+        width: 120px;
         height: 120px;
-        bottom: -70px; 
+        bottom: -70px;
     }
 
-    .menu{
+    .menu {
         margin-top: 90px;
     }
 
-    .title{
+    .title {
         font-size: 30px;
     }
-    .menu p{
+
+    .menu p {
         font-size: 11px;
     }
 
-    .contact a{
+    .contact a {
         display: flex;
         height: 40px;
         width: 40px;
     }
-    
-    .contact img{
+
+    .contact img {
         height: 40px;
     }
-    
+
 }
-
-
-
