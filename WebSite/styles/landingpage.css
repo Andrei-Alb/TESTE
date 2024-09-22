@@ -204,6 +204,12 @@ body{
         height: 120px;
         bottom: -70px; 
     }
+
+    .menu {
+        margin-top: -60px;
+    }
+
+
     .title{
         font-size: 30px;
     }
