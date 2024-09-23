@@ -116,12 +116,14 @@ body {
     text-align: center;
     margin-top: 150px;
     font-family: monospace;
+    cursor: default;
 }
 
 .title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 50px;
     text-shadow: 2px 0px 0px white;
+    cursor: default;
 }
 
 .btn {
