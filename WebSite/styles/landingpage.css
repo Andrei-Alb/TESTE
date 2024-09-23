@@ -117,6 +117,7 @@ body {
     margin-top: 150px;
     font-family: monospace;
     cursor: default;
+    font-size: 16px;
 }
 
 .title {
@@ -168,6 +169,8 @@ body {
 
 .contact a {
     display: flex;
+    justify-content: center;
+    align-items: center;
     height: 50px;
     width: 50px;
     margin: 0px 10px 0px 10px;
@@ -176,6 +179,8 @@ body {
 .contact img {
     height: 50px;
 }
+
+
 
 .menu button {
     width: 200px;
@@ -189,8 +194,9 @@ body {
     filter: drop-shadow(1px 5px 6px  rgba(255, 206, 249, 0.795));
 }
 
-
-
+.imagems:hover {
+    border: 1px solid rgba(0, 0, 0, 0.452);
+}
 
 @media (min-width: 0px) and (max-width: 1100px)  {
     .wall_back {
