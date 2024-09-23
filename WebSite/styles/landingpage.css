@@ -117,7 +117,10 @@ body {
     margin-top: 150px;
     font-family: monospace;
     cursor: default;
-    font-size: 16px;
+}
+
+.menu p {
+    font-size: large;
 }
 
 .title {
@@ -165,6 +168,7 @@ body {
 
 .contact-forms p {
     margin-top: 40px;
+    font-size: 15px;
 }
 
 .contact a {
