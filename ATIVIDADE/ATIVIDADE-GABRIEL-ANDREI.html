@@ -1,0 +1,308 @@
+<!DOCTYPE html>  
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rastreador de Hábitos com Despertador</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  
+  <style>
+    *{
+      cursor: default;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-image: linear-gradient(190deg, white, rgb(92, 91, 91));
+      margin: 0;
+    }
+    .container {
+      background-image: linear-gradient(180deg, white, rgb(189, 189, 189));
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 1px 4px 30px rgb(82, 81, 81);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+    input, button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .Habito-item {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .Habito-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .days {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .days button {
+      margin: 0 2px;
+      padding: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 5px;
+      border:1px solid rgb(172, 172, 172);
+      box-shadow: 0px 1px 5px rgb(97, 97, 97);
+    }
+    .completed {
+      background-color: #4caf50;
+      color: white;
+    }
+    .alert-controls {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #555;
+    }
+    .Habito-footer button {
+      font-size: 14px;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .clear-all {
+      background-color: rgb(192, 0, 0);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-top: 20px;
+      border-radius: 5px;
+    }
+
+    .text_habit{
+      border-radius: 10px;
+      border:none;
+      padding: 10px 10px 10px 50px;
+    }
+    .text_habit:hover{
+cursor: pointer;
+    }
+    .text_habit:focus{
+      outline: none;
+      box-shadow: 1px 1px 5px #757575;
+    }
+
+    .add_habit{
+      background-color: rgba(45, 153, 255, 0.943);
+      border-radius: 10px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: sans-serif;
+      transition: 0.5s;
+    }
+    .add_habit:hover{
+      background-color: rgba(59, 231, 59, 0.753);
+      box-shadow: 1px 1px 10px rgba(77, 223, 77, 0.685);
+      cursor: pointer;
+    }
+
+    .ex_habito{
+      background-color: rgba(255, 65, 65, 0.644);
+      border-radius: 10px;
+      border: none;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+
+    .ex_habito:hover{
+      background-color: rgba(253, 64, 64, 0.849);
+      box-shadow: 1px 1px 10px rgba(255, 0, 0, 0.603);
+      cursor: pointer;
+    }
+
+    .define_desp{
+      background-image: linear-gradient(180deg, rgba(236, 186, 48, 0.733), rgba(245, 226, 56, 0.795));
+      border-radius: 10px;
+      border: none;
+      cursor:pointer;
+      font-size: 12px;
+      font-weight: bold;
+      font-family: sans-serif;
+    }
+    .define_desp:hover{
+      background-color: rgba(255, 255, 43, 0.623);
+      box-shadow: 1px 1px 10px rgba(255, 255, 0, 0.651);
+    }
+
+    .edit_name{
+      background-color: #c2c2c2;
+      border: none;
+      border-radius: 10px;
+    }
+    .edit_name:hover{
+      background-color: #a0a0a0;
+    }
+
+    .create_date{
+      font-size: 13px;
+    }
+</style>
+</head>
+<body>    
+<div id="app" class="container">
+  <h2>Rastreador de Hábitos com Despertador</h2>
+  <h3 id="data-hoje"></h3>
+
+
+  <div>
+    <input class="text_habit" v-model="HabitoTitulo" placeholder="Digite o novo hábito">
+    <button class="add_habit" @click="addHabito">Adicionar Hábito</button>
+  </div>
+
+
+  <div v-for="Habito in Habitos" :key="Habito.id" class="Habito-item">
+    <div class="Habito-header">
+      <span>{{ Habito.Titulo }}</span>
+      <button class="ex_habito" @click="deleteHabito(Habito.id)">Excluir Hábito</button>
+    </div>
+
+
+    <div class="days">
+      <button
+        v-for="day in daysOfWeek"
+        :key="day"
+        :class="{ completed: Habito.completedDays.includes(day) }"
+        @click="toggleDay(Habito, day)"
+      >
+        {{ day }}
+      </button>
+    </div>
+
+
+    <div class="alert-controls">
+      <span v-if="Habito.alertTime">Despertador: {{ Habito.alertTime }}</span>
+      <button class="define_desp" @click="setAlert(Habito)">
+        {{ Habito.alertTime ? 'Alterar' : 'Definir' }} Despertador
+      </button>
+      <button class="ex_habito" v-if="Habito.alertTime" @click="removeAlert(Habito)">Remover Despertador</button>
+    </div>
+
+
+    <div class="Habito-footer">
+      <button class="edit_name" @click="editHabito(Habito)">Editar Nome do Hábito</button>
+      <p class="create_date">Criado em : {{ formatDate(Habito.createdAt) }}</p>
+    </div>
+  </div>
+
+  
+  <button @click="clearAll" class="clear-all">Limpar Todos os Hábitos</button>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      HabitoTitulo: '',
+      Habitos: JSON.parse(localStorage.getItem('Habitos')) || [],
+      daysOfWeek: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+      alertInterval: null
+    },
+    methods: {
+      addHabito() {
+        if (this.HabitoTitulo) {
+          const newHabito = {
+            id: Date.now(),
+            Titulo: this.HabitoTitulo,
+            completedDays: [],
+            alertTime: null,
+            createdAt: new Date()
+          };
+          this.Habitos.push(newHabito);
+          this.HabitoTitulo = '';
+          this.saveHabitos();
+        }
+      },
+      toggleDay(Habito, day) {
+        const dayIndex = Habito.completedDays.indexOf(day);
+        if (dayIndex > -1) {
+          Habito.completedDays.splice(dayIndex, 1);
+        } else {
+          Habito.completedDays.push(day);
+        }
+        this.saveHabitos();
+      },
+      editHabito(Habito) {
+        const newTitulo = prompt("Edite o título do hábito:", Habito.Titulo);
+        if (newTitulo) {
+          Habito.Titulo = newTitulo;
+          this.saveHabitos();
+        }
+      },
+      deleteHabito(id) {
+        this.Habitos = this.Habitos.filter(Habito => Habito.id !== id);
+        this.saveHabitos();
+      },
+      clearAll() {
+        this.Habitos = [];
+        localStorage.removeItem('Habitos');
+      },
+      setAlert(Habito) {
+        const alertTime = prompt("Defina o horário do despertador (HH:MM):", Habito.alertTime || "");
+        if (alertTime) {
+          Habito.alertTime = alertTime;
+          this.saveHabitos();
+        }
+      },
+      removeAlert(Habito) {
+        Habito.alertTime = null;
+        this.saveHabitos();
+      },
+      checkAlerts() {
+        const hoje = new Date();
+        const diaDaSemanaAtual = hoje.getDay();
+        const currentTime = hoje.toTimeString().slice(0, 5);
+
+        const diaSemanaString = this.daysOfWeek[diaDaSemanaAtual];
+        this.Habitos.forEach(Habito => {
+          if (Habito.completedDays.includes(diaSemanaString) && Habito.alertTime === currentTime) {
+            alert(`Hora de realizar o hábito: ${Habito.Titulo}`);
+            Habito.alertTime = null;
+            this.saveHabitos();
+          }
+        });
+      },
+      formatDate(date) {
+        return new Date(date).toLocaleDateString('pt-BR');
+      },
+      saveHabitos() {
+        localStorage.setItem('Habitos', JSON.stringify(this.Habitos));
+      }
+    },
+    mounted() {
+      this.alertInterval = setInterval(this.checkAlerts, 1000);
+    },
+    beforeDestroy() {
+      clearInterval(this.alertInterval);
+    }
+  });
+
+  const hoje = new Date();
+  const dataFormatada = hoje.toLocaleDateString('pt-BR');
+  document.getElementById('data-hoje').textContent = `Data de hoje: ${dataFormatada}`;
+</script>
+
+</body>
+</html>
